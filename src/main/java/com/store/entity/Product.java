@@ -1,0 +1,91 @@
+package com.store.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "PRODUCT")
+public class Product {
+
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="PRODUCTID")
+    private Long productId;
+	
+	@Column(name="SCANCODEID",unique=true)
+    private String scanCodeId;
+    
+	@Column(name="COST")
+    private Float cost;
+	
+	@Column(name="PRODUCTNAME")
+    private String productName;
+
+	@Column(name="PRODUCTTYPE")
+    private String productType;
+
+	public Product() {
+	}
+
+	public Product(Long productId, String scanCodeId, Float cost, String productName, String productType) {
+		super();
+		this.productId = productId;
+		this.scanCodeId = scanCodeId;
+		this.cost = cost;
+		this.productName = productName;
+		this.productType = productType;
+	}
+
+	public Long getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Long productId) {
+		this.productId = productId;
+	}
+
+	public String getScanCodeId() {
+		return scanCodeId;
+	}
+
+	public void setScanCodeId(String scanCodeId) {
+		this.scanCodeId = scanCodeId;
+	}
+
+	public Float getCost() {
+		return cost;
+	}
+
+	public void setCost(Float cost) {
+		this.cost = cost;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public String getProductType() {
+		return productType;
+	}
+
+	public void setProductType(String productType) {
+		this.productType = productType;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [productId=" + productId + ", scanCodeId=" + scanCodeId + ", cost=" + cost + ", productName="
+				+ productName + ", productType=" + productType + "]";
+	}    
+	
+	
+	
+}
