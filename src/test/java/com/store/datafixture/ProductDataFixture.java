@@ -1,5 +1,6 @@
 package com.store.datafixture;
 
+import com.store.dto.AddProductRequest;
 import com.store.entity.Product;
 
 /**
@@ -57,6 +58,17 @@ public class ProductDataFixture {
         Product product = new Product(productScanIdCricketBat, cricketBatPrice, productNameCricketBat, productTypeB);
 
         return product;
+    }
+    
+    public static String addProductJson(AddProductRequest addProductRequest)
+    {
+    	//Created custom Json but this can be done using Gson
+    	//Gson gson=new Gson();
+    	String customJson="{\"billId\":"+addProductRequest.getBillId()+
+    			",\"productIdWithQuantity\":[{\"productId\":"+addProductRequest.getProductIdWithQuantity().get(0).getProductId()+
+    			",\"quantity\":"+addProductRequest.getProductIdWithQuantity().get(0).getQuantity()+"}]}";
+    	
+    	return customJson;
     }
 
 }

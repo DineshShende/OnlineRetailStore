@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.store.dto.DetailedBillResponse;
 import com.store.entity.Bill;
 import com.store.entity.Product;
 import com.store.repository.BillItemRepository;
@@ -120,8 +121,6 @@ public class BillDetailsServiceTest {
 
         updatedBill = billDetailsService.addProduct(initializedBill, productA, 2);
 
-        System.out.println(updatedBill);
-
         assertNotNull(updatedBill.getBillId());
     }
 
@@ -136,9 +135,23 @@ public class BillDetailsServiceTest {
         Bill updatedBill = billDetailsService.addProduct(initializedBill, productA, 1);
 
         updatedBill = billDetailsService.addProduct(initializedBill, productB, 2);
+     
+        assertNotNull(updatedBill.getBillId());
+    }
+    
+    @Test
+    public void DetailedBillResponseTest() {
 
-        System.out.println(updatedBill);
+        Bill initializedBill = billDetailsService.intializeBill();
 
+        Bill updatedBill = billDetailsService.addProduct(initializedBill, productA, 1);
+
+        updatedBill = billDetailsService.addProduct(initializedBill, productB, 2);
+        
+        DetailedBillResponse detailedBillResponse=billDetailsService.geneateBill(updatedBill); 
+     
+        System.out.println(detailedBillResponse);
+        
         assertNotNull(updatedBill.getBillId());
     }
 }

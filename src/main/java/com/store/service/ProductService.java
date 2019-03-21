@@ -1,5 +1,7 @@
 package com.store.service;
 
+import org.springframework.stereotype.Service;
+
 import com.store.entity.Product;
 
 /**
@@ -9,6 +11,7 @@ import com.store.entity.Product;
  * @version 1.0
  * @since 21 Mar, 2019
  */
+@Service
 public interface ProductService {
 
     /**
@@ -17,6 +20,6 @@ public interface ProductService {
      * @param scanId the scan id
      * @return the by scan id
      */
-    Product getByScanId(Long scanId);
+    Product getByScanId(String scanId);
 
 }

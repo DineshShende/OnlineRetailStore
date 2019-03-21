@@ -30,8 +30,8 @@ public enum ProductType {
     /** The tax value. */
     private Integer taxValue;
 
-    public Integer getTaxValue() {
-        return taxValue;
+    public Float getTaxValue() {
+        return taxValue.floatValue();
     }
 
 }

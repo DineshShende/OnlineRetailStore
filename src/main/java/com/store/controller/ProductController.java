@@ -18,9 +18,18 @@ public class ProductController {
     ProductService productService;
 
     @RequestMapping(value = "/getByScanId/{scanId}")
-    public ResponseEntity<Product> getByScanId(@PathVariable Long scanId) {
-        Product product = productService.getByScanId(scanId);
+    public ResponseEntity<Product> getByScanId(@PathVariable String scanId) {
+
+    	if(scanId==null)
+    		return new ResponseEntity<Product>(HttpStatus.NOT_ACCEPTABLE);
+    	
+    	Product product = productService.getByScanId(scanId);
+    	
+    	if(product==null)
+    		return new ResponseEntity<Product>(HttpStatus.NO_CONTENT);
 
         return new ResponseEntity<Product>(product, HttpStatus.OK);
     }
+    
+    
 }

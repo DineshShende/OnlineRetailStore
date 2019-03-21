@@ -13,4 +13,6 @@ import com.store.entity.Product;
  */
 public interface ProductRepository extends CrudRepository<Product, Long> {
 
+	Product findByScanCodeId(String scanCodeId);
+	
 }

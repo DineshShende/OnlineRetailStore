@@ -42,20 +42,35 @@ public class ProductControllerMockTest {
     }
 
     /**
-     * Environment test.
+     * Get By ScanId Test with expected result found.
      * 
      * @throws Exception
      */
     @Test
-    public void getByScanIdTest() throws Exception {
+    public void getByScanIdTestFound() throws Exception {
 
-        when(productService.getByScanId(1L)).thenReturn(standardProductAWithId());
+        when(productService.getByScanId("1")).thenReturn(standardProductAWithId());
 
         this.mockMvc.perform(get("/product/getByScanId/1")).andDo(print()).andExpect(status().isOk())
-                .andExpect(jsonPath("$.result.homeAddressId.customerType").value(standardAddress().getCustomerType()))
-                .andExpect(jsonPath("$.result.homeAddressId.addressLine").value(standardAddress().getAddressLine()))
-                .andExpect(jsonPath("$.result.homeAddressId.city").value(standardAddress().getCity()));
+                .andExpect(jsonPath("$.scanCodeId").value(standardProductAWithId().getScanCodeId()))
+                .andExpect(jsonPath("$.productName").value(standardProductAWithId().getProductName()))
+                .andExpect(jsonPath("$.productType").value(standardProductAWithId().getProductType()));
 
     }
+    
+    /**
+     * Get By ScanId Test with expectation of result not found.
+     * 
+     * @throws Exception
+     */
+    @Test
+    public void getByScanIdTestNotFound() throws Exception {
+
+        when(productService.getByScanId("1")).thenReturn(null);
+
+        this.mockMvc.perform(get("/product/getByScanId/1")).andDo(print()).andExpect(status().isNoContent());
+
+    }
+    
 
 }
