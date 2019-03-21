@@ -7,85 +7,127 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * The Class Product.
+ *
+ * @author Dinesh Shende
+ * @version 1.0
+ * @since 21 Mar, 2019
+ */
 @Entity
 @Table(name = "PRODUCT")
 public class Product {
 
-	@Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="PRODUCTID")
+    /** The product id. */
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "PRODUCTID")
     private Long productId;
-	
-	@Column(name="SCANCODEID",unique=true)
+
+    /** The scan code id. */
+    @Column(name = "SCANCODEID", unique = true)
     private String scanCodeId;
-    
-	@Column(name="COST")
+
+    /** The cost. */
+    @Column(name = "COST")
     private Float cost;
-	
-	@Column(name="PRODUCTNAME")
+
+    /** The product name. */
+    @Column(name = "PRODUCTNAME")
     private String productName;
 
-	@Column(name="PRODUCTTYPE")
+    /** The product type. */
+    @Column(name = "PRODUCTTYPE")
     private String productType;
 
-	public Product() {
-	}
+    /**
+     * Instantiates a new product.
+     */
+    public Product() {
+    }
 
-	public Product(Long productId, String scanCodeId, Float cost, String productName, String productType) {
-		super();
-		this.productId = productId;
-		this.scanCodeId = scanCodeId;
-		this.cost = cost;
-		this.productName = productName;
-		this.productType = productType;
-	}
+    /**
+     * Instantiates a new product.
+     *
+     * @param productId the product id
+     * @param scanCodeId the scan code id
+     * @param cost the cost
+     * @param productName the product name
+     * @param productType the product type
+     */
+    public Product(Long productId, String scanCodeId, Float cost, String productName, String productType) {
+        super();
+        this.productId = productId;
+        this.scanCodeId = scanCodeId;
+        this.cost = cost;
+        this.productName = productName;
+        this.productType = productType;
+    }
 
-	public Long getProductId() {
-		return productId;
-	}
+    /**
+     * Instantiates a new product.
+     *
+     * @param scanCodeId the scan code id
+     * @param cost the cost
+     * @param productName the product name
+     * @param productType the product type
+     */
+    public Product(String scanCodeId, Float cost, String productName, String productType) {
+        this.scanCodeId = scanCodeId;
+        this.cost = cost;
+        this.productName = productName;
+        this.productType = productType;
+    }
 
-	public void setProductId(Long productId) {
-		this.productId = productId;
-	}
+    public Long getProductId() {
+        return productId;
+    }
 
-	public String getScanCodeId() {
-		return scanCodeId;
-	}
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
 
-	public void setScanCodeId(String scanCodeId) {
-		this.scanCodeId = scanCodeId;
-	}
+    public String getScanCodeId() {
+        return scanCodeId;
+    }
 
-	public Float getCost() {
-		return cost;
-	}
+    public void setScanCodeId(String scanCodeId) {
+        this.scanCodeId = scanCodeId;
+    }
 
-	public void setCost(Float cost) {
-		this.cost = cost;
-	}
+    public Float getCost() {
+        return cost;
+    }
 
-	public String getProductName() {
-		return productName;
-	}
+    public void setCost(Float cost) {
+        this.cost = cost;
+    }
 
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
+    public String getProductName() {
+        return productName;
+    }
 
-	public String getProductType() {
-		return productType;
-	}
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
 
-	public void setProductType(String productType) {
-		this.productType = productType;
-	}
+    public String getProductType() {
+        return productType;
+    }
 
-	@Override
-	public String toString() {
-		return "Product [productId=" + productId + ", scanCodeId=" + scanCodeId + ", cost=" + cost + ", productName="
-				+ productName + ", productType=" + productType + "]";
-	}    
-	
-	
-	
+    public void setProductType(String productType) {
+        this.productType = productType;
+    }
+
+    /**
+     * {@inheritDoc}
+     * <p>
+     * This specific implementation .
+     */
+    @Override
+    public String toString() {
+        return "Product [productId=" + productId + ", scanCodeId=" + scanCodeId + ", cost=" + cost + ", productName="
+                + productName + ", productType=" + productType + "]";
+    }
+
 }
